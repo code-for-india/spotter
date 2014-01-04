@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Type:
+  = @issue.issue_type
+%p
+  %b Latitude:
+  = @issue.latitude
+%p
+  %b Longitude:
+  = @issue.longitude
+%p
+  %b Description:
+  = @issue.description
+%p
+  %b Status:
+  = @issue.status
+
+= link_to 'Edit', edit_issue_path(@issue)
+\|
+= link_to 'Back', issues_path

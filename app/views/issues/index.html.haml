@@ -1,0 +1,29 @@
+%h1 Listing issues
+
+%table
+  %tr
+    %th Issue Type
+    %th Latitude
+    %th Longitude
+    %th Description
+    %th Status
+    %th Image Thumb
+    %th
+    %th
+    %th
+
+  - @issues.each do |issue|
+    %tr
+      %td= issue.issue_type
+      %td= issue.latitude
+      %td= issue.longitude
+      %td= issue.description
+      %td= issue.status
+      %td= image_tag issue.image.url(:thumb)
+      %td= link_to 'Show', issue
+      %td= link_to 'Edit', edit_issue_path(issue)
+      %td= link_to 'Destroy', issue, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Issue', new_issue_path

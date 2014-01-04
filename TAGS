@@ -1,0 +1,26 @@
+
+app/controllers/issues_controller.rb,321
+class IssuesController < ApplicationControllerIssuesController1,0
+  def indexindex6,153
+  def showshow12,237
+  def newnew16,275
+  def editedit21,338
+  def createcreate26,395
+  def updateupdate42,878
+  def destroydestroy56,1293
+    def set_issueset_issue66,1536
+    def issue_paramsissue_params71,1691
+
+app/controllers/application_controller.rb,79
+class ApplicationController < ActionController::BaseApplicationController1,0
+
+app/assets/javascripts/application.js,0
+
+app/models/issue.rb,43
+class Issue < ActiveRecord::BaseIssue1,0
+
+app/helpers/issues_helper.rb,37
+module IssuesHelperIssuesHelper1,0
+
+app/helpers/application_helper.rb,47
+module ApplicationHelperApplicationHelper1,0
