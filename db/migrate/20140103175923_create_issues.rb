@@ -6,6 +6,7 @@ class CreateIssues < ActiveRecord::Migration
       t.float :longitude
       t.text :description
       t.text :status
+      t.text :address
 
       t.timestamps
     end
