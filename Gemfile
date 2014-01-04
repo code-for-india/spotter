@@ -48,3 +48,5 @@ gem 'haml'
 gem 'haml-rails'
 gem 'foundation-rails'
 gem "paperclip", "~> 3.0"
+
+gem "geocoder", "~> 1.1.9"
