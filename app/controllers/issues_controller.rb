@@ -10,6 +10,9 @@ class IssuesController < ApplicationController
   # GET /issues/1
   # GET /issues/1.json
   def show
+    lat = params[:lat]
+    lng = params[:lng]
+    @dist = @issue.distance lat, lng
   end
 
   # GET /issues/new
