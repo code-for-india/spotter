@@ -1,0 +1,253 @@
+  <h4><a href='#issues'>Issues</a></h4>
+  <ul>
+      <li><a href='#issues-index'>index</a></li>
+      <li><a href='#issues-show'>show</a></li>
+      <li><a href='#issues-create'>create</a></li>
+  </ul>
+
+
+
+  <hr/>
+
+  <div>
+    <h2 id="issues">
+      <a href='#issues'>Issues</a><br>
+      <small></small>
+    </h2>
+  </div>
+
+
+  <div>
+
+      <hr/>
+
+      <h3 id="issues-index">
+      <a href='#issues'>Issues</a> / <a href='#issues-index'>index</a>
+      </h3>
+
+      <div>
+          <h4>
+              GET /api/issues/:lat/:lng/:area
+            <br>
+            <small>Shows issue in :area around the given :lat and :lng</small>
+          </h4>
+      </div>
+
+      <div>
+        
+          <h4>Examples</h4>
+            <pre class="wiki">GET /issues/18/72/1000.json
+200
+[
+  {
+    &quot;id&quot;: 2,
+    &quot;issue_type&quot;: &quot;Drainage&quot;,
+    &quot;latitude&quot;: 18.975,
+    &quot;longitude&quot;: 72.8258,
+    &quot;url&quot;: &quot;http://test.host/issues/2.json&quot;
+  }
+]</pre>
+
+
+          <h4>Params</h4>
+          <ul>
+    <li>
+      <strong>area </strong>:
+      <small>
+        optional
+        
+          [ Must be String ]
+      </small>
+      
+<p>The area within which issues need to be shown</p>
+
+    </li>
+    
+    <li>
+      <strong>lat </strong>:
+      <small>
+        optional
+        
+          [ Must be String ]
+      </small>
+      
+<p>Latitude of the user</p>
+
+    </li>
+    
+    <li>
+      <strong>lng </strong>:
+      <small>
+        optional
+        
+          [ Must be String ]
+      </small>
+      
+<p>Longitude of the user</p>
+
+    </li>
+    
+</ul>
+
+      </div>
+      <hr/>
+
+      <h3 id="issues-show">
+      <a href='#issues'>Issues</a> / <a href='#issues-show'>show</a>
+      </h3>
+
+      <div>
+          <h4>
+              GET /api/issues/:id/:lat/:lng
+            <br>
+            <small>show issue and its distance from user</small>
+          </h4>
+      </div>
+
+      <div>
+        
+          <h4>Examples</h4>
+            <pre class="wiki">GET /issues/18/72/1000.json
+200
+{
+  &quot;id&quot;: 2,
+  &quot;issue_type&quot;: &quot;Drainage&quot;,
+  &quot;latitude&quot;: 18.975,
+  &quot;longitude&quot;: 72.8258,
+  &quot;description&quot;: &quot;Severe drainage problem&quot;,
+  &quot;status&quot;: &quot;1&quot;,
+  &quot;created_at&quot;: &quot;2014-02-01T14:11:30.000Z&quot;,
+  &quot;image_url&quot;: &quot;/system/issues/images/000/000/002/medium/test.png?1391263889&quot;,
+  &quot;updated_at&quot;: &quot;2014-02-01T14:11:30.000Z&quot;,
+  &quot;distance&quot;: 4228.382904109771
+}</pre>
+
+
+          <h4>Params</h4>
+          <ul>
+    <li>
+      <strong>id </strong>:
+      <small>
+        optional
+        
+          [ Must be String ]
+      </small>
+      
+<p>The id of the concerned issue</p>
+
+    </li>
+    
+    <li>
+      <strong>lat </strong>:
+      <small>
+        optional
+        
+          [ Must be String ]
+      </small>
+      
+<p>Latitude of the user</p>
+
+    </li>
+    
+    <li>
+      <strong>lng </strong>:
+      <small>
+        optional
+        
+          [ Must be String ]
+      </small>
+      
+<p>Longitude of the user</p>
+
+    </li>
+    
+</ul>
+
+      </div>
+      <hr/>
+
+      <h3 id="issues-create">
+      <a href='#issues'>Issues</a> / <a href='#issues-create'>create</a>
+      </h3>
+
+      <div>
+          <h4>
+              POST /api/issues
+            <br>
+            <small>create a new issue</small>
+          </h4>
+      </div>
+
+      <div>
+        
+          <h4>Examples</h4>
+            <pre class="wiki">POST /issues
+{
+  &quot;issue&quot;: {
+    &quot;issue_type&quot;: &quot;Drainage&quot;,
+    &quot;description&quot;: &quot;Severe drainage problem&quot;,
+    &quot;latitude&quot;: &quot;18.975&quot;,
+    &quot;longitude&quot;: &quot;72.8258&quot;,
+    &quot;status&quot;: &quot;1&quot;
+  }
+}
+302
+&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;http://test.host/issues/4&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</pre>
+
+
+          <h4>Params</h4>
+          <ul>
+    <li>
+      <strong>issue_type </strong>:
+      <small>
+        optional
+        
+          [ Must be String ]
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>latitude </strong>:
+      <small>
+        optional
+        
+          [ Must be String ]
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>longitude </strong>:
+      <small>
+        optional
+        
+          [ Must be String ]
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>description </strong>:
+      <small>
+        optional
+        
+          [ Must be String ]
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>status </strong>:
+      <small>
+        optional
+        
+          [ Must be String ]
+      </small>
+      
+    </li>
+    
+</ul>
+
+      </div>
+  </div>
