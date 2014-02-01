@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140103180240) do
     t.float    "longitude"
     t.text     "description"
     t.text     "status"
+    t.text     "address"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"

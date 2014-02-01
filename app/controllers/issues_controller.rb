@@ -1,31 +1,44 @@
 class IssuesController < ApplicationController
+
+  respond_to :xml, :json
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
 
-  # GET /issues
-  # GET /issues.json
+  api :GET, '/issues/:lat/:lng/:area', "Shows issue in :area around the given :lat and :lng"
+  param :area, String, "The area within which issues need to be shown"
+  param :lat, String, "Latitude of the user"
+  param :lng, String, "Longitude of the user"
+  formats ['json', 'xml']
   def index
-    @issues = Issue.all
+    # shows issue in a given area
+    @issues = Issue.in_area params[:lat], params[:lng], params[:area]
   end
 
-  # GET /issues/1
-  # GET /issues/1.json
+  api :GET, '/issues/:id/:lat/:lng/', "show issue and its distance from user"
+  param :id, String, "The id of the concerned issue"
+  param :lat, String, "Latitude of the user"
+  param :lng, String, "Longitude of the user"
+  formats ['json', 'xml']
   def show
+    # shows distance between you and issue
     lat = params[:lat]
     lng = params[:lng]
     @dist = @issue.distance lat, lng
   end
 
-  # GET /issues/new
   def new
     @issue = Issue.new
   end
 
-  # GET /issues/1/edit
   def edit
   end
 
-  # POST /issues
-  # POST /issues.json
+  api :POST, '/issues', "create a new issue"
+  param :issue_type, String
+  param :latitude, String
+  param :longitude, String
+  param :description, String
+  param :status, String
+  formats ['json', 'xml']
   def create
     @issue = Issue.new(issue_params)
 
@@ -40,8 +53,6 @@ class IssuesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /issues/1
-  # PATCH/PUT /issues/1.json
   def update
     respond_to do |format|
       if @issue.update(issue_params)
@@ -54,8 +65,6 @@ class IssuesController < ApplicationController
     end
   end
 
-  # DELETE /issues/1
-  # DELETE /issues/1.json
   def destroy
     @issue.destroy
     respond_to do |format|

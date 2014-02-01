@@ -7,8 +7,8 @@ class Issue < ActiveRecord::Base
     image.url(:medium)
   end
 
-  def in_area area
-    self.nearbys(area)
+  def self.in_area lat, lng, area
+    Issue.near([lat, lng], area)
   end
 
   def distance lat, lng
