@@ -5,7 +5,7 @@ class IssuesController < ApplicationController
   respond_to :xml, :json
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
 
-  api :GET, '/issues/:lat/:lng/:area', "Shows issue in :area around the given :lat and :lng"
+  api :GET, '/issues/:lat/:lng/in/:area', "Shows issue in :area around the given :lat and :lng"
   param :area, String, "The area within which issues need to be shown"
   param :lat, String, "Latitude of the user"
   param :lng, String, "Longitude of the user"
