@@ -47,7 +47,7 @@ class IssuesController < ApplicationController
     respond_to do |format|
       if @issue.save
         format.html { redirect_to @issue, notice: 'Issue was successfully created.' }
-        format.json { render json: nil , status: :created }
+        format.json { render action: 'show', status: :created, location: @issue }
       else
         format.html { render action: 'new' }
         format.json { render json: @issue.errors, status: :unprocessable_entity }
