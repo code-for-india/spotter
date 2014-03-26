@@ -12,6 +12,11 @@ class IssuesControllerTest < ActionController::TestCase
 
     get :show, id: @issue, lat: 10, lng: 10, :format => :json
     assert_response :success
+
+    assert_difference('Issue.count') do
+      post :create, issue: { issue_type: @issue.issue_type, description: @issue.description, latitude: @issue.latitude, longitude: @issue.longitude, status: @issue.status}, :format => :json
+    end
+    assert_response :created
   end
 
   test "should get index" do
