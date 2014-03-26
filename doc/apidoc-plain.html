@@ -2,7 +2,11 @@
   <ul>
       <li><a href='#issues-index'>index</a></li>
       <li><a href='#issues-show'>show</a></li>
+      <li><a href='#issues-new'>new</a></li>
+      <li><a href='#issues-edit'>edit</a></li>
       <li><a href='#issues-create'>create</a></li>
+      <li><a href='#issues-update'>update</a></li>
+      <li><a href='#issues-destroy'>destroy</a></li>
   </ul>
 
 
@@ -27,7 +31,7 @@
 
       <div>
           <h4>
-              GET /api/issues/:lat/:lng/:area
+              GET /issues/:lat/:lng/in/:area
             <br>
             <small>Shows issue in :area around the given :lat and :lng</small>
           </h4>
@@ -36,15 +40,18 @@
       <div>
         
           <h4>Examples</h4>
-            <pre class="wiki">GET /issues/18/72/1000.json
+            <pre class="wiki">GET /issues/18/72/in/1000.json
 200
 [
   {
-    &quot;id&quot;: 2,
+    &quot;id&quot;: 17,
     &quot;issue_type&quot;: &quot;Drainage&quot;,
     &quot;latitude&quot;: 18.975,
     &quot;longitude&quot;: 72.8258,
-    &quot;url&quot;: &quot;http://test.host/issues/2.json&quot;
+    &quot;description&quot;: &quot;Severe drainage problem&quot;,
+    &quot;image_url&quot;: &quot;/system/issues/images/000/000/017/thumb/test.png?1395822314&quot;,
+    &quot;created_at&quot;: &quot;2014-03-26T08:25:15.000Z&quot;,
+    &quot;url&quot;: &quot;http://test.host/issues/17.json&quot;
   }
 ]</pre>
 
@@ -98,7 +105,7 @@
 
       <div>
           <h4>
-              GET /api/issues/:id/:lat/:lng
+              GET /issues/:id/:lat/:lng
             <br>
             <small>show issue and its distance from user</small>
           </h4>
@@ -107,18 +114,17 @@
       <div>
         
           <h4>Examples</h4>
-            <pre class="wiki">GET /issues/18/72/1000.json
+            <pre class="wiki">GET /issues/18/72/in/1000.json
 200
 {
-  &quot;id&quot;: 2,
+  &quot;id&quot;: 17,
   &quot;issue_type&quot;: &quot;Drainage&quot;,
   &quot;latitude&quot;: 18.975,
   &quot;longitude&quot;: 72.8258,
   &quot;description&quot;: &quot;Severe drainage problem&quot;,
   &quot;status&quot;: &quot;1&quot;,
-  &quot;created_at&quot;: &quot;2014-02-01T14:11:30.000Z&quot;,
-  &quot;image_url&quot;: &quot;/system/issues/images/000/000/002/medium/test.png?1391263889&quot;,
-  &quot;updated_at&quot;: &quot;2014-02-01T14:11:30.000Z&quot;,
+  &quot;image_url&quot;: &quot;/system/issues/images/000/000/017/medium/test.png?1395822314&quot;,
+  &quot;created_at&quot;: &quot;2014-03-26T08:25:15.000Z&quot;,
   &quot;distance&quot;: 4228.382904109771
 }</pre>
 
@@ -166,13 +172,51 @@
       </div>
       <hr/>
 
+      <h3 id="issues-new">
+      <a href='#issues'>Issues</a> / <a href='#issues-new'>new</a>
+      </h3>
+
+      <div>
+          <h4>
+              GET /issues/new
+            <br>
+            <small></small>
+          </h4>
+      </div>
+
+      <div>
+        
+
+
+      </div>
+      <hr/>
+
+      <h3 id="issues-edit">
+      <a href='#issues'>Issues</a> / <a href='#issues-edit'>edit</a>
+      </h3>
+
+      <div>
+          <h4>
+              GET /issues/:id/edit
+            <br>
+            <small></small>
+          </h4>
+      </div>
+
+      <div>
+        
+
+
+      </div>
+      <hr/>
+
       <h3 id="issues-create">
       <a href='#issues'>Issues</a> / <a href='#issues-create'>create</a>
       </h3>
 
       <div>
           <h4>
-              POST /api/issues
+              POST /issues
             <br>
             <small>create a new issue</small>
           </h4>
@@ -181,18 +225,18 @@
       <div>
         
           <h4>Examples</h4>
-            <pre class="wiki">POST /issues
+            <pre class="wiki">POST /issues/18/72/in/1000.json
 {
   &quot;issue&quot;: {
     &quot;issue_type&quot;: &quot;Drainage&quot;,
     &quot;description&quot;: &quot;Severe drainage problem&quot;,
-    &quot;latitude&quot;: &quot;18.975&quot;,
-    &quot;longitude&quot;: &quot;72.8258&quot;,
+    &quot;latitude&quot;: 18.975,
+    &quot;longitude&quot;: 72.8258,
     &quot;status&quot;: &quot;1&quot;
   }
 }
-302
-&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;http://test.host/issues/4&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</pre>
+201
+null</pre>
 
 
           <h4>Params</h4>
@@ -248,6 +292,118 @@
     </li>
     
 </ul>
+
+      </div>
+      <hr/>
+
+      <h3 id="issues-update">
+      <a href='#issues'>Issues</a> / <a href='#issues-update'>update</a>
+      </h3>
+
+      <div>
+          <h4>
+              PATCH /issues/:id
+            <br>
+            <small>Update an issue</small>
+          </h4>
+          <h4>
+              PUT /issues/:id
+            <br>
+            <small>Update an issue</small>
+          </h4>
+      </div>
+
+      <div>
+        
+
+          <h4>Errors</h4>
+            302
+            
+            <br>
+
+          <h4>Params</h4>
+          <ul>
+    <li>
+      <strong>issue </strong>:
+      <small>
+        optional
+        
+          [ Must be a Hash ]
+      </small>
+      
+    </li>
+    <ul>
+    <li>
+      <strong>description </strong>:
+      <small>
+        optional
+        
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>issue_type </strong>:
+      <small>
+        optional
+        
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>latitude </strong>:
+      <small>
+        optional
+        
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>longitude </strong>:
+      <small>
+        optional
+        
+      </small>
+      
+    </li>
+    
+    <li>
+      <strong>status </strong>:
+      <small>
+        optional
+        
+      </small>
+      
+    </li>
+    
+</ul>
+
+</ul>
+
+      </div>
+      <hr/>
+
+      <h3 id="issues-destroy">
+      <a href='#issues'>Issues</a> / <a href='#issues-destroy'>destroy</a>
+      </h3>
+
+      <div>
+          <h4>
+              DELETE /issues/:id
+            <br>
+            <small>Destroy an issue</small>
+          </h4>
+      </div>
+
+      <div>
+        
+
+          <h4>Errors</h4>
+            302
+            
+            <br>
 
       </div>
   </div>

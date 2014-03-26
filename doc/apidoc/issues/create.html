@@ -33,7 +33,7 @@
 
   <div class='page-header'>
     <h1>
-      POST /api/issues<br>
+      POST /issues<br>
       <small>create a new issue</small>
     </h1>
   </div>
@@ -43,18 +43,18 @@
   
 
     <h2>Examples</h2>
-      <pre class="prettyprint">POST /issues
+      <pre class="prettyprint">POST /issues/18/72/in/1000.json
 {
   &quot;issue&quot;: {
     &quot;issue_type&quot;: &quot;Drainage&quot;,
     &quot;description&quot;: &quot;Severe drainage problem&quot;,
-    &quot;latitude&quot;: &quot;18.975&quot;,
-    &quot;longitude&quot;: &quot;72.8258&quot;,
+    &quot;latitude&quot;: 18.975,
+    &quot;longitude&quot;: 72.8258,
     &quot;status&quot;: &quot;1&quot;
   }
 }
-302
-&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;http://test.host/issues/4&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</pre>
+201
+null</pre>
 
     <h2>Supported Formats</h2>
     json, xml

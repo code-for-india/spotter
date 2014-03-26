@@ -39,16 +39,36 @@
     </thead>
     <tbody>
           <tr>
-            <td><a href='./apidoc/issues/index.html'>GET /api/issues/:lat/:lng/:area</a></td>
+            <td><a href='./apidoc/issues/index.html'>GET /issues/:lat/:lng/in/:area</a></td>
             <td width='60%'>Shows issue in :area around the given :lat and :lng</td>
           </tr>
           <tr>
-            <td><a href='./apidoc/issues/show.html'>GET /api/issues/:id/:lat/:lng</a></td>
+            <td><a href='./apidoc/issues/show.html'>GET /issues/:id/:lat/:lng</a></td>
             <td width='60%'>show issue and its distance from user</td>
           </tr>
           <tr>
-            <td><a href='./apidoc/issues/create.html'>POST /api/issues</a></td>
+            <td><a href='./apidoc/issues/new.html'>GET /issues/new</a></td>
+            <td width='60%'></td>
+          </tr>
+          <tr>
+            <td><a href='./apidoc/issues/edit.html'>GET /issues/:id/edit</a></td>
+            <td width='60%'></td>
+          </tr>
+          <tr>
+            <td><a href='./apidoc/issues/create.html'>POST /issues</a></td>
             <td width='60%'>create a new issue</td>
+          </tr>
+          <tr>
+            <td><a href='./apidoc/issues/update.html'>PATCH /issues/:id</a></td>
+            <td width='60%'>Update an issue</td>
+          </tr>
+          <tr>
+            <td><a href='./apidoc/issues/update.html'>PUT /issues/:id</a></td>
+            <td width='60%'>Update an issue</td>
+          </tr>
+          <tr>
+            <td><a href='./apidoc/issues/destroy.html'>DELETE /issues/:id</a></td>
+            <td width='60%'>Destroy an issue</td>
           </tr>
     </tbody>
   </table>
