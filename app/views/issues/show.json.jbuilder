@@ -1,2 +1,9 @@
-json.extract! @issue, :id, :issue_type, :latitude, :longitude, :description, :status, :created_at, :image_url, :updated_at
+json.id @issue.id
+json.issue_type @issue.issue_type
+json.latitude @issue.latitude
+json.longitude @issue.longitude
+json.description @issue.description
+json.status @issue.status
+json.image_url @issue.image_medium
+json.created_at @issue.created_at
 json.distance @dist

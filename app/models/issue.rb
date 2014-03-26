@@ -3,7 +3,12 @@ class Issue < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode
 
-  def image_url
+  def image_thumb
+    image.url(:thumb)
+  end
+
+  def image_medium
+    # we do not send large images yet. At the most, a medium sized.
     image.url(:medium)
   end
 

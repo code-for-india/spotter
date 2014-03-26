@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class IssuesControllerTest < ActionController::TestCase
+  include ActiveSupport
   setup do
     @issue = create(:issue)
   end
@@ -17,6 +18,9 @@ class IssuesControllerTest < ActionController::TestCase
     get :index, lat: 18, lng: 72, area: 1000, :format => :json
     assert_response :success
     assert_not_nil assigns(:issues)
+    issues = JSON.decode response.body
+    assert_equal issues.size, 1
+    assert_match /thumb/, issues[0]['image_url']
   end
 
   test "should get new" do
@@ -38,6 +42,11 @@ class IssuesControllerTest < ActionController::TestCase
 
   test "should show issue" do
     get :show, id: @issue, lat: 10, lng: 10, :format => :json
+    assert assigns(:issue)
+    resp = JSON.decode(response.body)
+
+    # make sure that show sends a medium sized image
+    assert_match /medium/, resp['image_url']
     assert_response :success
   end
 
