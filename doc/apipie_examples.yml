@@ -21,7 +21,7 @@
         description: Severe drainage problem
         status: '1'
         image_url: /images/medium/missing.png
-        created_at: '2014-03-26T09:12:26.341Z'
+        created_at: '2014-03-26T09:50:17.919Z'
         distance: 4228.382904109771
     - code: '201'
     - show_in_doc: 1
@@ -64,7 +64,7 @@
         description: Severe drainage problem
         status: '1'
         image_url: /images/medium/missing.png
-        created_at: '2014-03-26T09:12:33.965Z'
+        created_at: '2014-03-26T09:50:24.305Z'
         distance: 
     - code: '201'
     - show_in_doc: 0
@@ -90,17 +90,6 @@
     - code: '204'
     - show_in_doc: 0
     - recorded: true
-- issues#edit:
-  - !omap
-    - verb: :GET
-    - path: /issues/10/edit
-    - versions: []
-    - query: ''
-    - request_data: 
-    - response_data: 
-    - code: '200'
-    - show_in_doc: 0
-    - recorded: true
 - issues#index:
   - !omap
     - verb: :GET
@@ -115,39 +104,28 @@
         latitude: 18.975
         longitude: 72.8258
         description: Severe drainage problem
-        image_url: /system/issues/images/000/000/002/thumb/test.png?1395825144
-        created_at: '2014-03-26T09:12:25.000Z'
+        image_url: /system/issues/images/000/000/002/thumb/test.png?1395827413
+        created_at: '2014-03-26T09:50:16.000Z'
         url: http://test.host/issues/2.json
     - code: '200'
     - show_in_doc: 1
     - recorded: true
   - !omap
     - verb: :GET
-    - path: /issues/18/72/in/1000.json
+    - path: /issues/18/72/in/2000.json
     - versions:
       - '1.0'
     - query: ''
     - request_data: 
     - response_data:
-      - id: 11
+      - id: 10
         issue_type: Drainage
         latitude: 18.975
         longitude: 72.8258
         description: Severe drainage problem
-        image_url: /system/issues/images/000/000/011/thumb/test.png?1395825160
-        created_at: '2014-03-26T09:12:42.000Z'
-        url: http://test.host/issues/11.json
-    - code: '200'
-    - show_in_doc: 0
-    - recorded: true
-- issues#new:
-  - !omap
-    - verb: :GET
-    - path: /issues/new
-    - versions: []
-    - query: ''
-    - request_data: 
-    - response_data: 
+        image_url: /system/issues/images/000/000/010/thumb/test.png?1395827431
+        created_at: '2014-03-26T09:50:35.000Z'
+        url: http://test.host/issues/10.json
     - code: '200'
     - show_in_doc: 0
     - recorded: true
@@ -166,28 +144,28 @@
         longitude: 72.8258
         description: Severe drainage problem
         status: '1'
-        image_url: /system/issues/images/000/000/002/medium/test.png?1395825144
-        created_at: '2014-03-26T09:12:25.000Z'
+        image_url: /system/issues/images/000/000/002/medium/test.png?1395827413
+        created_at: '2014-03-26T09:50:16.000Z'
         distance: 4228.382904109771
     - code: '200'
     - show_in_doc: 1
     - recorded: true
   - !omap
     - verb: :GET
-    - path: /issues/13/10/10.json
+    - path: /issues/11/10/10.json
     - versions:
       - '1.0'
     - query: ''
     - request_data: 
     - response_data:
-        id: 13
+        id: 11
         issue_type: Drainage
         latitude: 18.975
         longitude: 72.8258
         description: Severe drainage problem
         status: '1'
-        image_url: /system/issues/images/000/000/013/medium/test.png?1395825163
-        created_at: '2014-03-26T09:12:45.000Z'
+        image_url: /system/issues/images/000/000/011/medium/test.png?1395827435
+        created_at: '2014-03-26T09:50:37.000Z'
         distance: 4228.382904109771
     - code: '200'
     - show_in_doc: 0
@@ -195,17 +173,17 @@
 - issues#update:
   - !omap
     - verb: :PATCH
-    - path: /issues/14
+    - path: /issues/12
     - versions: []
     - query: issue%5Bdescription%5D=Severe+drainage+problem&issue%5Bissue_type%5D=Drainage&issue%5Blatitude%5D=18.975&issue%5Blongitude%5D=72.8258&issue%5Bstatus%5D=1
     - request_data: 
-    - response_data: <html><body>You are being <a href="http://test.host/issues/14">redirected</a>.</body></html>
+    - response_data: <html><body>You are being <a href="http://test.host/issues/12">redirected</a>.</body></html>
     - code: '302'
     - show_in_doc: 0
     - recorded: true
   - !omap
     - verb: :PATCH
-    - path: /issues/14
+    - path: /issues/12
     - versions: []
     - query: issue%5Bdescription%5D=Severe+drainage+problem&issue%5Bissue_type%5D=Drainage&issue%5Blatitude%5D=18.975&issue%5Blongitude%5D=72.8258&issue%5Bstatus%5D=1
     - request_data: 

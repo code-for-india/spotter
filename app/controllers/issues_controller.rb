@@ -27,14 +27,11 @@ class IssuesController < ApplicationController
     @dist = @issue.distance lat, lng
   end
 
-  def new
-    @issue = Issue.new
-  end
-
-  def edit
-  end
-
   api :POST, '/issues', "create a new issue"
+  description "
+  ignore the url shown in the example. possibly the result of some apipie bug. need to investigate.
+  actual request url is /issues
+  "
   param :issue_type, String
   param :latitude, String
   param :longitude, String

@@ -20,17 +20,12 @@ class IssuesControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index, lat: 18, lng: 72, area: 1000, :format => :json
+    get :index, lat: 18, lng: 72, area: 2000, :format => :json
     assert_response :success
     assert_not_nil assigns(:issues)
     issues = JSON.decode response.body
     assert_equal issues.size, 1
     assert_match /thumb/, issues[0]['image_url']
-  end
-
-  test "should get new" do
-    get :new
-    assert_response :success
   end
 
   test "should create issue" do
@@ -52,11 +47,6 @@ class IssuesControllerTest < ActionController::TestCase
 
     # make sure that show sends a medium sized image
     assert_match /medium/, resp['image_url']
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @issue
     assert_response :success
   end
 
