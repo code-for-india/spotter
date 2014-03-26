@@ -1,4 +1,6 @@
 # Spotter
 
 ### Docs
-Look into doc/apidoc.html for complete documentation of APIs.
+run
+``` rake apipie:static ```
+and look into doc/apidoc.html for complete documentation of APIs.
