@@ -37,6 +37,7 @@ class IssuesController < ApplicationController
   param :longitude, String
   param :description, String
   param :status, String
+  param :image, String, "base64 encoded string of an image"
   formats ['json', 'xml']
   def create
     @issue = Issue.new(issue_params)
