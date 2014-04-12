@@ -14,7 +14,13 @@ class IssuesControllerTest < ActionController::TestCase
     assert_response :success
 
     assert_difference('Issue.count') do
-      post :create, issue: { issue_type: @issue.issue_type, description: @issue.description, latitude: @issue.latitude, longitude: @issue.longitude, status: @issue.status}, :format => :json
+      post :create, issue: {
+                            issue_type: @issue.issue_type,
+                            description: @issue.description,
+                            latitude: @issue.latitude,
+                            longitude: @issue.longitude,
+                            status: @issue.status
+                           }, :format => :json
     end
     assert_response :created
   end
@@ -30,12 +36,24 @@ class IssuesControllerTest < ActionController::TestCase
 
   test "should create issue" do
     assert_difference('Issue.count') do
-      post :create, issue: {issue_type: @issue.issue_type, description: @issue.description, latitude: @issue.latitude, longitude: @issue.longitude, status: @issue.status}
+      post :create, issue: {
+                            issue_type: @issue.issue_type,
+                            description: @issue.description,
+                            latitude: @issue.latitude,
+                            longitude: @issue.longitude,
+                            status: @issue.status
+                           }
     end
     assert_redirected_to issue_path(assigns(:issue))
 
     assert_difference('Issue.count') do
-      post :create, issue: { issue_type: @issue.issue_type, description: @issue.description, latitude: @issue.latitude, longitude: @issue.longitude, status: @issue.status}, :format => :json
+      post :create, issue: {
+                            issue_type: @issue.issue_type,
+                            description: @issue.description,
+                            latitude: @issue.latitude,
+                            longitude: @issue.longitude,
+                            status: @issue.status
+                           }, :format => :json
     end
     assert_response :created
   end
@@ -51,10 +69,23 @@ class IssuesControllerTest < ActionController::TestCase
   end
 
   test "should update issue" do
-    patch :update, id: @issue, issue: { description: @issue.description, latitude: @issue.latitude, longitude: @issue.longitude, status: @issue.status, issue_type: @issue.issue_type }
+    patch :update, id: @issue, issue: {
+                                       description: @issue.description,
+                                       latitude: @issue.latitude,
+                                       longitude: @issue.longitude,
+                                       status: @issue.status,
+                                       issue_type: @issue.issue_type
+                                      }
+
     assert_redirected_to issue_path(assigns(:issue))
 
-    patch :update, id: @issue, issue: { description: @issue.description, latitude: @issue.latitude, longitude: @issue.longitude, status: @issue.status, issue_type: @issue.issue_type }, :format => :json
+    patch :update, id: @issue, issue: {
+                                       description: @issue.description,
+                                       latitude: @issue.latitude,
+                                       longitude: @issue.longitude,
+                                       status: @issue.status,
+                                       issue_type: @issue.issue_type
+                                      }, :format => :json
     assert_response 204
   end
 
