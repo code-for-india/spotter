@@ -22,16 +22,16 @@ class Issue < ActiveRecord::Base
   end
 
   def add_image image
-    image_file = Base64.decode64(image)
-    file = Tempfile.new(["test", ".jpg"])
-    begin
-      file.binmode
-      file.write image_file
+    decoded_data = Base64.decode64(image)
+    data = StringIO.new decoded_data
 
-      self.image = file
-    ensure
-      file.close
-      file.unlink
+    data.class_eval do
+      attr_accessor :content_type, :original_filename
     end
+
+    data.content_type = "image/png"
+    data.original_filename = File.basename("file.png")
+
+    self.image = data
   end
 end
