@@ -41,6 +41,12 @@ class IssuesController < ApplicationController
   def create
     @issue = Issue.new(issue_params)
 
+    if params[:issue][:image]
+      @issue.add_image(params[:issue][:image])
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
+
     respond_to do |format|
       if @issue.save
         format.html { redirect_to @issue, notice: 'Issue was successfully created.' }
@@ -80,6 +86,6 @@ class IssuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def issue_params
-      params.require(:issue).permit(:issue_type, :latitude, :longitude, :description, :status, :image)
+      params.require(:issue).permit(:issue_type, :latitude, :longitude, :description, :status)
     end
 end

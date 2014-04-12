@@ -4,6 +4,7 @@ class IssuesControllerTest < ActionController::TestCase
   include ActiveSupport
   setup do
     @issue = create(:issue)
+    @file = Base64.encode64(File.open(Rails.root.join("app/assets/images/test.png")).read)
   end
 
   test "for apipie" do
@@ -19,7 +20,8 @@ class IssuesControllerTest < ActionController::TestCase
                             description: @issue.description,
                             latitude: @issue.latitude,
                             longitude: @issue.longitude,
-                            status: @issue.status
+                            status: @issue.status,
+                            image: @file
                            }, :format => :json
     end
     assert_response :created
@@ -35,13 +37,16 @@ class IssuesControllerTest < ActionController::TestCase
   end
 
   test "should create issue" do
+
+
     assert_difference('Issue.count') do
       post :create, issue: {
                             issue_type: @issue.issue_type,
                             description: @issue.description,
                             latitude: @issue.latitude,
                             longitude: @issue.longitude,
-                            status: @issue.status
+                            status: @issue.status,
+                            image: @file
                            }
     end
     assert_redirected_to issue_path(assigns(:issue))
@@ -52,7 +57,8 @@ class IssuesControllerTest < ActionController::TestCase
                             description: @issue.description,
                             latitude: @issue.latitude,
                             longitude: @issue.longitude,
-                            status: @issue.status
+                            status: @issue.status,
+                            image: @file
                            }, :format => :json
     end
     assert_response :created
