@@ -3,6 +3,7 @@ class Issue < ActiveRecord::Base
   has_attached_file :image, :styles => { :medium => "300x300", :thumb => "100x100"}
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode
+  before_create :randomize_file_name
 
   def image_thumb
     image.url(:thumb)
@@ -33,5 +34,10 @@ class Issue < ActiveRecord::Base
     data.original_filename = File.basename("file.png")
 
     self.image = data
+  end
+
+  def randomize_file_name
+    extension = File.extname(image_file_name).downcase
+    self.image.instance_write(:file_name, "#{SecureRandom.hex(16)}#{extension}")
   end
 end
