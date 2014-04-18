@@ -37,9 +37,16 @@ class IssuesController < ApplicationController
   param :longitude, String
   param :description, String
   param :status, String
+  param :image, String, "base64 encoded string of an image"
   formats ['json', 'xml']
   def create
     @issue = Issue.new(issue_params)
+
+    if params[:issue][:image]
+      @issue.add_image(params[:issue][:image])
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
 
     respond_to do |format|
       if @issue.save
@@ -80,6 +87,6 @@ class IssuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def issue_params
-      params.require(:issue).permit(:issue_type, :latitude, :longitude, :description, :status, :image)
+      params.require(:issue).permit(:issue_type, :latitude, :longitude, :description, :status)
     end
 end
